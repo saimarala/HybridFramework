@@ -25,20 +25,55 @@ public class JavaLogics {
 //      Find common elements between two arrays
 //        int[] array1 = {1, 2, 3, 4, 5};
 //        int[] array2 = {4, 5, 6, 7, 8};
-//
+//        int[] array3 = {4, 5, 6, 7, 8};
+
 //        Set<Integer> set1 = new HashSet<>();
+//        Set<Integer> set3 = new HashSet<>();
 //        Set<Integer> commonSet = new HashSet<>();
 //// Add elements of the first array to the set
 //        for (int num : array1) {
 //            set1.add(num);
 //        }
-//// Check for common elements in the second array
+//        for (int num : array3) {
+//            set3.add(num);
+//        }
+// Check for common elements in the second array
 //        for (int num : array2) {
-//            if (set1.contains(num)) {
+//            if (set1.contains(num) && set3.contains(num)) {
 //                commonSet.add(num);
 //            }
 //        }
 //        System.out.println(commonSet);
+//        Integer[] array1 = {1, 2, 3, 4, 5};
+//        Integer[] array2 = {4, 5, 6, 7, 8};
+//        Integer[] array3 = {4, 5, 6, 7, 8};
+//        // Convert arrays to sets
+//        Set<Integer> set1 = new HashSet<>(Arrays.asList(array1));
+//        Set<Integer> set2 = new HashSet<>(Arrays.asList(array2));
+//        Set<Integer> set3 = new HashSet<>(Arrays.asList(array3));
+//
+//        // Find common elements by retaining only common ones in set1
+//        set1.retainAll(set2);  // set1 now contains only elements present in both set1 and set2
+//        set1.retainAll(set3);  // set1 now contains only elements present in all three sets
+
+//        Second Largest and Second Smallest Numbers:
+        int[] arr = {12, 35, 1, 10, 34, 2};
+//
+//        // Sort the array
+//        Arrays.sort(arr);
+//
+//        // Second smallest is the second element (arr[1])
+//        int secondSmallest = arr[1];
+//
+//        // Second largest is the second-to-last element (arr[arr.length - 2])
+//        int secondLargest = arr[arr.length - 2];
+//
+//        System.out.println("Second Smallest: " + secondSmallest);
+//        System.out.println("Second Largest: " + secondLargest);
+        SecondLargestAndSmallest(arr);
+
+//        // Print the common elements
+//        System.out.println("Common elements: " + set1);
         //   Java program to gives Output:“00003241212” for the Input        String Str = “32400121200”
 
 //        String input = "32400121200";
@@ -66,8 +101,8 @@ public class JavaLogics {
 
 //        printUniqueCharacters("this is selenium");
 //        Java program to find if a string is Palindrome
-//        String str = "madam";
-//        System.out.println(isPalindrome(str));
+        String str = "madama";
+       System.out.println(isPalindrome(str));
 //        Java program to find all permutations of a given string
 //        permute("abc", "");
 //        Java program to reverse each word of a given string
@@ -105,34 +140,103 @@ public class JavaLogics {
 //   Find the Factorial of a Number using Recursion
 //        System.out.println(factorial(5));
 //Find the Maximum Occurring Character in a String
-        getMaxOccurringChar("programmming");
-
+        //       getMaxOccurringChar("programmming");
+//  Java program to find Palindrome number
+//        if (isPalindrome(1001)) {
+//            System.out.println(1001 + " is a palindrome.");
+//        } else {
+//            System.out.println(1001 + " is not a palindrome.");
+//        }
+//Java program to count Odd and Even number from given array
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] count = countOddAndEven(array);
+        System.out.println("Even numbers count: " + count[1]);
+        System.out.println("Odd numbers count: " + count[0]);
 
         //*************************
     }
-   static void getMaxOccurringChar(String str) {
+    public static int[] countOddAndEven(int[] array) {
+        int[] count = new int[2]; // Index 0 for odd count, Index 1 for
+        // even count
+        for (int num : array) {
+            if (num % 2 == 0) {
+                count[1]++; // Increment even count
+            } else {
+                count[0]++; // Increment odd count
+            }
+        }
+        return count;
+    }
+    public static boolean isPalindrome(int num) {
+        int originalNumber = num;
+        int reversedNumber = 0;
+        while (num != 0) {
+           // int digit = num % 10;
+            reversedNumber = (reversedNumber * 10) + num % 10;
+            num = num/10;
+        }
+        return originalNumber == reversedNumber;
+    }
+
+    static void   SecondLargestAndSmallest(int arr[]) {
+        if (arr.length < 2) {
+            System.out.println("Array should contain at least two elements");
+            return;
+        }
+
+        // Initialize variables
+        int smallest = Integer.MAX_VALUE, secondSmallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE, secondLargest = Integer.MIN_VALUE;
+
+        // Find the smallest and largest numbers
+        for (int a :arr) {
+            if (a < smallest) {
+                secondSmallest = smallest;
+                smallest = a;
+            } else if (a < secondSmallest && a != smallest) {
+                secondSmallest = a;
+            }
+
+            if (a> largest) {
+                secondLargest = largest;
+                largest = a;
+            } else if (a > secondLargest && a != largest) {
+                secondLargest = a;
+            }
+        }
+
+        if (secondSmallest == Integer.MAX_VALUE || secondLargest == Integer.MIN_VALUE) {
+            System.out.println("No second smallest or second largest exists.");
+        } else {
+            System.out.println("Second Smallest: " + secondSmallest);
+            System.out.println("Second Largest: " + secondLargest);
+        }
+
+    }
+
+    static void getMaxOccurringChar(String str) {
         HashMap<Character, Integer> charCount = new HashMap<>();
         for (char c : str.toCharArray()) {
             charCount.put(c, charCount.getOrDefault(c, 0) + 1);
         }
 //        char maxChar = str.charAt(0);
 //        int maxCount = 0;
-       char maxChar = ' ';
-       int maxCount = -1;
+        char maxChar = ' ';
+        int maxCount = -1;
 //        for (char c : charCount.keySet()) {
 //            if (charCount.get(c) > maxCount) {
 //                maxCount = charCount.get(c);
 //                maxChar = c;
 //            }
 //        }
-       for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
-           if (entry.getValue() > maxCount) {
-               maxChar = entry.getKey();
-               maxCount = entry.getValue();
-           }
-       }
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxChar = entry.getKey();
+                maxCount = entry.getValue();
+            }
+        }
 
-       System.out.println(maxChar);
+        System.out.println(maxChar);
 
     }
 
@@ -155,16 +259,12 @@ public class JavaLogics {
     }
 
     static void CharacterCount(String inputString) {
-        HashMap<String,Integer> charCountMap = new HashMap<>();
-        for(String s : inputString.split(" "))
-        {
-            if(charCountMap.containsKey(s))
-            {
-                charCountMap.put(s,charCountMap.get(s)+1);
-            }
-            else
-            {
-                charCountMap.put(s,1);
+        HashMap<String, Integer> charCountMap = new HashMap<>();
+        for (String s : inputString.split(" ")) {
+            if (charCountMap.containsKey(s)) {
+                charCountMap.put(s, charCountMap.get(s) + 1);
+            } else {
+                charCountMap.put(s, 1);
             }
         }
         System.out.println("Count of Characters in a given string : " +
@@ -175,15 +275,15 @@ public class JavaLogics {
         HashMap<Character, Integer> charCountMap = new HashMap<>();
         char[] strArray = inputString.toCharArray();
         for (char c : strArray) {
-           if(String.valueOf(c).isBlank()){
-               if (charCountMap.containsKey(c)) {
-                   charCountMap.put(c, charCountMap.getOrDefault(c,0)+ 1);
-               } else {
-                   charCountMap.put(c, 1);
-               }
-           }
+            if (String.valueOf(c).isBlank()) {
+                if (charCountMap.containsKey(c)) {
+                    charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+                } else {
+                    charCountMap.put(c, 1);
+                }
+            }
         }
-     //   Set<Character> charsInString = charCountMap.keySet();
+        //   Set<Character> charsInString = charCountMap.keySet();
         System.out.println("Duplicate Characters in : " + inputString);
         for (Character ch : charCountMap.keySet()) {
             if (charCountMap.get(ch) > 1) {
@@ -320,6 +420,7 @@ public class JavaLogics {
             }
         }
     }
+
     static boolean isPalindrome(String str) {
         int start = 0;
         int end = str.length() - 1;
@@ -332,32 +433,34 @@ public class JavaLogics {
         }
         return true;
     }
+
     static void permute(String str, String prefix) {
         if (str.length() == 0) {
             System.out.println(prefix);
         } else {
 
             for (int i = 0; i < str.length(); i++) {
-                String rem = str.substring(0,i) + str.substring(i+1);
-                permute(rem,prefix + str.charAt(i));
+                String rem = str.substring(0, i) + str.substring(i + 1);
+                permute(rem, prefix + str.charAt(i));
             }
         }
     }
+
     static void reverseEachWordOfString(String inputString) {
         String[] words = inputString.split(" ");
         String reverseString = "";
         for (int i = 0; i < words.length; i++) {
             String word = words[i];
             String nstr = "";
-            char ch;
+            //  char ch;
             for (int j = 0; j < word.length(); j++) {
-                ch = word.charAt(j);
-                nstr = ch + nstr;
+                //    ch = word.charAt(j);
+                nstr = word.charAt(j) + nstr;
             }
             reverseString = reverseString + nstr + " ";
         }
         System.out.println(inputString);
-        System.out.println(reverseString);
+        System.out.println(reverseString.trim());
     }
 
 
