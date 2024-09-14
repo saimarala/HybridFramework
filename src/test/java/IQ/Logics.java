@@ -31,15 +31,31 @@ public class  Logics {
 //					n1=n2;
 //					n2=n3;
 //				}
+        // amother
+//        int number = 6;
+//        int first = 0, second = 1, next=0;
+//        System.out.println("Fibonacci series is ");
+//        for ( int i = 0; i<=number; i++)
+//        {
+//            System.out.print(first + " ");
+//            next = second+first;
+//            first = second;
+//            second = next;
+//        }
 
         //factorial
 
 //				int fact=1,num=5;
 //
 //				for(int i=1;i<=num;i++) {
-//					fact=fact*i;
+//					fact*=i;
 //				}
 //				System.out.println("factorial "+num+"is: "+fact);
+
+ ///       System.out.println(factorial(5));
+
+
+
 
 //				// *
 //				// **
@@ -149,7 +165,7 @@ public class  Logics {
 //									System.out.println(num+"*"+i+"="+(num*i));
 //								}
         //sum of given number
-//
+
 //        		int num =123;
 //        		int sum=0;
 //        		Scanner sc=new Scanner(System.in);
@@ -181,7 +197,7 @@ public class  Logics {
 //						}
 
         //Armstrong number
-//
+
 //						int num=153;
 //						int rem=0;
 //						int sum=0;
@@ -197,9 +213,9 @@ public class  Logics {
 //        }
 //        else {
 //            System.out.println(sum+" not Armstrong number");
-//        }
-
-        //Anagram Or Not
+////        }
+//
+//        //Anagram Or Not
 //        String s1="Silent";
 //        String s2="Listen";
 //        boolean status= true;
@@ -277,7 +293,7 @@ public class  Logics {
 
 
         //reverse a stirng
-
+//
 //        String z = "";
 //				char e='i';
 //				int c=0;
@@ -371,6 +387,9 @@ public class  Logics {
 //					//reverse=reverse+words[i]+" ";
 //                    reverse+=words[i]+" ";
 //				}
+//        for (int i=0;i< words.length;i++){
+//            reverse =words[i]+" +"+reverse;
+//        }
 //				System.out.println(reverse.trim());
 //				//ascendening order
 //					int arr[]= {1,9,6,2,5,8};
@@ -382,21 +401,21 @@ public class  Logics {
 //					int temp=0;
 //					for(int i=0;i<arr.length;i++){
 //						for(int j=i+1;j<arr.length;j++) {
-//							if(arr[i]<arr[j]) {
+//							if(arr[i]>arr[j]) {
 //								temp=arr[i];
 //								arr[i]=arr[j];
 //								arr[j]=temp;
 //							}
 //						}
 //					}
-//				    for (int i = 0; i < arr.length; i++) {
-//				        System.out.print(arr[i] + " ");
-//				    }
+////				    for (int i = 0; i < arr.length; i++) {
+////				        System.out.print(arr[i] + " ");
+////				    }
 //				    for (int a:arr){
 //				        System.out.print(a+" ");
 //                    }
 //					System.out.println();
-           // System.out.println(n);
+//            System.out.println(n);
         //split alphanumeric
 		//		StringBuffer alpha=new StringBuffer(),num=new StringBuffer(),special=new StringBuffer();
 //				String num1="";
@@ -455,19 +474,21 @@ public class  Logics {
 
 
         //largest number & smallest number
+        int[] arr = {1, 3, 5, 7, 9};
+        int largest = arr[0], smallest =arr[0];
 
-//				int a[]={2,4,5,10,8,7,2,100,0,-1};
-//				int smallest=a[0];
-//				int largest=a[0];
-//				for(int i=1;i<a.length;i++) {
-//					if(a[i]>largest) {
-//						largest=a[i];
-//					}else if (a[i]<smallest) {
-//						smallest=a[i];
-//					}
-//			}
-//				System.out.println("largest :"+largest);
-//				System.out.println("smallest :"+smallest);
+
+        for (int num : arr) {
+            if (num > largest) {
+                largest = num;
+            }else
+                if(num< smallest){
+                smallest=num;
+        }
+    }
+        System.out.println("largest :"+largest);
+        System.out.println("smallest :"+smallest);
+
 
         //list even & odd
 
@@ -1200,9 +1221,9 @@ public class  Logics {
 //       str2=str2.replaceAll("[^aeiouAEIOU]","");
 //       System.out.println(str2);
 
-        String str = "Automation";
-        StringBuilder reversed = new StringBuilder(str).reverse();
-        System.out.println(reversed);
+//        String str = "Automation";
+//        StringBuilder reversed = new StringBuilder(str).reverse();
+//        System.out.println(reversed);
 
         //Array rotation
 //        int input[]={1,2,3,4,5};
@@ -1263,6 +1284,8 @@ public class  Logics {
     }
 
     // Method to check if a number is prime
+    //Code to find the average of all prime numbers in a given range
+    //in java
     public static boolean isPrime(int number) {
         if (number <= 1) {
             return false; // Prime numbers are greater than 1
@@ -1283,6 +1306,11 @@ public class  Logics {
         }
         System.out.println(name);
         printName(name, count - 1); // Recursive call with decremented count
+    }
+
+    static int factorial(int n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
     }
 
 }
