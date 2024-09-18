@@ -1,7 +1,6 @@
 package IQ;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -25,6 +24,19 @@ public class Test {
         for (String str : arr) {
             System.out.print(str + " ");
         }
+
+        String str = "swiss";
+        Map<Character, Integer> charCount = new HashMap<>();
+        for (char c : str.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == 1) {
+                System.out.println(entry.getKey());
+                break;
+            }
+        }
+
 
     }
 }

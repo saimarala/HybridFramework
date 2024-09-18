@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class JavaLogics {
 
@@ -55,14 +56,15 @@ public class JavaLogics {
 //        // Find common elements by retaining only common ones in set1
 //        set1.retainAll(set2);  // set1 now contains only elements present in both set1 and set2
 //        set1.retainAll(set3);  // set1 now contains only elements present in all three sets
+//        System.out.println(set1);
 
 //        Second Largest and Second Smallest Numbers:
-        int[] arr = {12, 35, 1, 10, 34, 2};
+//        int[] arr = {12, 35, 1, 10, 34, 2};
 //
 //        // Sort the array
 //        Arrays.sort(arr);
 //
-//        // Second smallest is the second element (arr[1])
+//        // Second smallest is the s+econd element (arr[1])
 //        int secondSmallest = arr[1];
 //
 //        // Second largest is the second-to-last element (arr[arr.length - 2])
@@ -70,8 +72,8 @@ public class JavaLogics {
 //
 //        System.out.println("Second Smallest: " + secondSmallest);
 //        System.out.println("Second Largest: " + secondLargest);
-        SecondLargestAndSmallest(arr);
-
+//        SecondLargestAndSmallest(arr);
+//
 //        // Print the common elements
 //        System.out.println("Common elements: " + set1);
         //   Java program to gives Output:“00003241212” for the Input        String Str = “32400121200”
@@ -88,9 +90,10 @@ public class JavaLogics {
 //        String output = rearrangeDigits(input);
 //        System.out.println("Output: " + output);
 //Java program to gives two Output:“Seleniumautomation”, “12312” for the Input String Str = “selenium123automation12”
-        // separateAlphaAndNumeric("selenium123automation12");
+//         separateAlphaAndNumeric("selenium123automation12");
+
 //   Java program to gives two Output:“abcde”, “ABCDE” for the Input String Str = “aBACbcEDed”
-        // separateCharacters("aBACbcEDed");
+//         separateCharacters("aBACbcEDed");
 //        Java program to gives Output: a2b2c3d2   for the Input String Str = “aabbcccdd”
 //        System.out.println(getCharacterCount("aabbcccdd"));
 //        Java program to print each letter twice  from a given string
@@ -101,8 +104,8 @@ public class JavaLogics {
 
 //        printUniqueCharacters("this is selenium");
 //        Java program to find if a string is Palindrome
-        String str = "madama";
-       System.out.println(isPalindrome(str));
+//        String str = "madama";
+//       System.out.println(isPalindrome(str));
 //        Java program to find all permutations of a given string
 //        permute("abc", "");
 //        Java program to reverse each word of a given string
@@ -121,6 +124,7 @@ public class JavaLogics {
 //                count++;
 //            }
 //        }
+//        System.out.println(count);
 // Array consists of integers and special characters,sum only integers
 //        String[] array = {"5", "2", "9", "a", "1", "6", "#", "3"};
 //        System.out.println("Sum of integers in the array: "+sumIntegers(array));
@@ -140,7 +144,7 @@ public class JavaLogics {
 //   Find the Factorial of a Number using Recursion
 //        System.out.println(factorial(5));
 //Find the Maximum Occurring Character in a String
-        //       getMaxOccurringChar("programmming");
+//               getMaxOccurringChar("programmming");
 //  Java program to find Palindrome number
 //        if (isPalindrome(1001)) {
 //            System.out.println(1001 + " is a palindrome.");
@@ -148,10 +152,26 @@ public class JavaLogics {
 //            System.out.println(1001 + " is not a palindrome.");
 //        }
 //Java program to count Odd and Even number from given array
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] count = countOddAndEven(array);
-        System.out.println("Even numbers count: " + count[1]);
-        System.out.println("Odd numbers count: " + count[0]);
+//        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//        int[] count = countOddAndEven(array);
+//        System.out.println("Even numbers count: " + count[1]);
+//        System.out.println("Odd numbers count: " + count[0]);
+ //Java program – input array was given [ 1,1,2,2,3,4,5,5,6,6] Output – [3,4]
+//        int[] array = {1, 1, 2, 2, 3, 4, 5, 5, 6, 6};
+//        List<Integer> result = findNonRepeatedElements1(array);
+//        System.out.println("Non-repeated elements: " + result);
+        // Find the Common Elements in Two Array
+//        int[] arr1 = {1, 2, 3, 4,5};
+//        int[] arr2 = {3, 4, 5, 6};
+//        int[] arr3 = {3, 4, 5, 6};
+//
+//        System.out.println(findCommonElements(arr1,arr2,arr3));
+//     .
+
+
+//        int year = 2028;
+//        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+//        System.out.println(isLeap);
 
         //*************************
     }
@@ -275,7 +295,7 @@ public class JavaLogics {
         HashMap<Character, Integer> charCountMap = new HashMap<>();
         char[] strArray = inputString.toCharArray();
         for (char c : strArray) {
-            if (String.valueOf(c).isBlank()) {
+            if (!String.valueOf(c).isBlank()) {
                 if (charCountMap.containsKey(c)) {
                     charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
                 } else {
@@ -296,8 +316,8 @@ public class JavaLogics {
 // Step 1: Count occurrences of each element using a    HashMap
         Map<Integer, Integer> countMap = new HashMap<>();
         for (int num : array) {
-            //countMap.put(num, countMap.getOrDefault(num, 0) + 1);
             countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+           // countMap.put(num, countMap.getOrDefault(num, 0) + 1);
         }
 
 // Step 2: Identify elements with count equal to 1 (non repeated)
@@ -311,6 +331,27 @@ public class JavaLogics {
             }
         }
         return nonRepeatedElements;
+    }
+
+    public static List<Integer> findNonRepeatedElements1(int[] array) {
+// Step 1: Count occurrences of each element using a    HashMap
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int num : array) {
+
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+// Step 2: Identify elements with count equal to 1 (non repeated)
+
+//        List<Integer> nonRepeatedElements = new ArrayList<>();
+//        for (Map.Entry<Integer, Integer> entry :
+//                countMap.entrySet()) {
+//
+//            if (entry.getValue() == 1) {
+//                nonRepeatedElements.add(entry.getKey());
+//            }
+//        }
+        return countMap.entrySet().stream().filter(e->e.getValue()==1).map(e->e.getKey()).collect(Collectors.toList());
     }
 
     public static Set<Integer> findCommonElements(int[] array1,
@@ -329,6 +370,26 @@ public class JavaLogics {
         }
         return commonSet;
     }
+    public static Set<Integer> findCommonElements(int[] array1,
+                                                  int[] array2,int[] array3) {
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        Set<Integer> commonSet = new HashSet<>();
+// Add elements of the first array to the set
+        for (int num : array1) {
+            set1.add(num);
+        }
+        for (int num : array2) {
+            set2.add(num);
+        }
+// Check for common elements in the second array
+        for (int num : array3) {
+            if (set1.contains(num) && set2.contains(num)) {
+                commonSet.add(num);
+            }
+        }
+        return commonSet;
+    }
 
     public static String rearrangeDigits(String input) {
 // Split the input into parts: digits and non-digits
@@ -342,7 +403,8 @@ public class JavaLogics {
             }
         }
 // Concatenate non-digits followed by digits
-        return digits.toString() + nonDigits.toString();
+      //  return digits.toString() + nonDigits.toString();
+        return nonDigits.toString()+digits.toString() ;
     }
 
     public static void separateAlphaAndNumeric(String input) {
@@ -394,10 +456,11 @@ public class JavaLogics {
 
 
         StringBuilder doubled = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            doubled.append(ch).append(ch); // Append each character twice
+        for (char c:str.toCharArray()) {
+            //char ch = str.charAt(i);
+            doubled.append(c).append(c); // Append each character twice
         }
+        //System.out.println(doubled);
         return doubled.toString();
     }
 
