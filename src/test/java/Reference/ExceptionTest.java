@@ -1,6 +1,6 @@
 package Reference;
 
-public class Exception {
+public class ExceptionTest {
 
     void test(){
         //Exception Name	Description
