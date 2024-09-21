@@ -1,6 +1,6 @@
 package Reference;
 
-public class ExceptionTest {
+public class SeleniumExceptions {
 
     void test(){
         //Exception Name	Description
