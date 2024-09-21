@@ -14,7 +14,7 @@ public class JavaLogics {
 //        Java program – input array was
 //        given [ 1,1,2,2,3,4,5,5,6,6],
 //        Output – [3,4]
-//        int[] array = {1, 1, 2, 2, 3, 4, 5, 5, 6, 6};
+        int[] array = {1, 1, 2, 2, 3, 4, 5, 5, 6, 6};
 ////        List<Integer> result = findNonRepeatedElements(array);
 ////        System.out.println("Non-repeated elements: " + result);
 //        Map<Integer, Integer> countMap = new HashMap<>();
@@ -23,6 +23,22 @@ public class JavaLogics {
 //
 //        }
 //        System.out.println(countMap.entrySet().stream().filter(e->e.getValue()==1).map(e->e.getKey()).collect(Collectors.toList()));
+        String str="abcdab";
+     String str1="this is is selenium is is selenium";
+        for (char ch:str.toCharArray()){
+            if(str.indexOf(ch)==str.lastIndexOf(ch)){
+                System.out.println(ch);
+                break;
+            }
+        }
+
+        for(String st:str1.split(" ")){
+            if(str1.indexOf(st)==str1.lastIndexOf(st)){
+                System.out.println(st);
+                break;
+            }
+        }
+
 //      Find common elements between two arrays
 //        int[] array1 = {1, 2, 3, 4, 5};
 //        int[] array2 = {4, 5, 6, 7, 8};
