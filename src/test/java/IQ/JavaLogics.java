@@ -188,9 +188,41 @@ public class JavaLogics {
 //        int year = 2028;
 //        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 //        System.out.println(isLeap);
-
+       // For each element in the array, find the next element
+        // which is greater than it, if no such element exists, output -1.
+        int[] arr = {4, 5, 2, 25};
+        printNextGreaterElement(arr);
         //*************************
     }
+    public static void printNextGreaterElement(int[] arr) {
+        Stack<Integer> stack = new Stack<>();
+        int[] result = new int[arr.length];
+
+        // Traverse the array from the end
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // Pop elements from the stack that are smaller than or equal to the current element
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+
+            // If stack is empty, no greater element found, so assign -1
+            if (stack.isEmpty()) {
+                result[i] = -1;
+            } else {
+                // The top of the stack is the next greater element
+                result[i] = stack.peek();
+            }
+
+            // Push the current element into the stack
+            stack.push(arr[i]);
+        }
+
+        // Print the result
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i] + " -> " + result[i]);
+        }
+    }
+
     public static int[] countOddAndEven(int[] array) {
         int[] count = new int[2]; // Index 0 for odd count, Index 1 for
         // even count
