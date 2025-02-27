@@ -23,17 +23,17 @@ public class JavaLogics {
 //
 //        }
 //        System.out.println(countMap.entrySet().stream().filter(e->e.getValue()==1).map(e->e.getKey()).collect(Collectors.toList()));
-        String str="abcdab";
-     String str1="this is is selenium is is selenium";
-        for (char ch:str.toCharArray()){
-            if(str.indexOf(ch)==str.lastIndexOf(ch)){
+        String str = "abcdab";
+        String str1 = "this is is selenium is is selenium";
+        for (char ch : str.toCharArray()) {
+            if (str.indexOf(ch) == str.lastIndexOf(ch)) {
                 System.out.println(ch);
                 break;
             }
         }
 
-        for(String st:str1.split(" ")){
-            if(str1.indexOf(st)==str1.lastIndexOf(st)){
+        for (String st : str1.split(" ")) {
+            if (str1.indexOf(st) == str1.lastIndexOf(st)) {
                 System.out.println(st);
                 break;
             }
@@ -172,7 +172,7 @@ public class JavaLogics {
 //        int[] count = countOddAndEven(array);
 //        System.out.println("Even numbers count: " + count[1]);
 //        System.out.println("Odd numbers count: " + count[0]);
- //Java program – input array was given [ 1,1,2,2,3,4,5,5,6,6] Output – [3,4]
+        //Java program – input array was given [ 1,1,2,2,3,4,5,5,6,6] Output – [3,4]
 //        int[] array = {1, 1, 2, 2, 3, 4, 5, 5, 6, 6};
 //        List<Integer> result = findNonRepeatedElements1(array);
 //        System.out.println("Non-repeated elements: " + result);
@@ -188,12 +188,166 @@ public class JavaLogics {
 //        int year = 2028;
 //        boolean isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 //        System.out.println(isLeap);
-       // For each element in the array, find the next element
+        // For each element in the array, find the next element
         // which is greater than it, if no such element exists, output -1.
-        int[] arr = {4, 5, 2, 25};
-        printNextGreaterElement(arr);
+//        int[] arr = {4, 5, 2, 25};
+//       / printNextGreaterElement(arr);
+//
+//        int[] array1 = {1, 2, 3, 2, 1};
+//        if (isPalindrome(array1)) {
+//            System.out.println("The array is a palindrome.");
+//        } else {
+//            System.out.println("The array is not a palindrome.");
+//        }
+        //Rearrange Positive and Negative Numbers
+        //Alternately
+//        int[] array2 = {1, -2, 3, -4, 5, -6};
+//        rearrange(array2);
+//        System.out.println("Rearranged array: " + Arrays.toString(array2));
+//Move All Zeros to the End of an Array 
+//        int[] array3 = {0, 1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9};
+//        moveZeros(array3);
+//        System.out.println("Array after moving zeros to the end: " + Arrays.toString(array3));
+        //Find the Union of Two Arrays
+//        int[] array1 = {1, 2, 3, 4, 5};
+//        int[] array2 = {3, 4, 5, 6, 7};
+//        int[] unionArray = findUnion(array1, array2);
+//        System.out.println("Union of arrays: " + Arrays.toString(unionArray));
+        //Rotate an Array
+        //Write a program to rotate an array to the right by a given number of steps. Example:
+//        //Input: [1, 2, 3, 4, 5], Rotate by 2
+//                int[] array3= {1, 2, 3, 4, 5};
+//        int k = 2;
+//        rotate(array3, k);
+//        System.out.println("Rotated Array: " + Arrays.toString(array3));
+
+        int[] array1 = {2, 2, 1, 1, 1, 2, 2};
+        int majorityElement = findMajorityElement(array1);
+        if (majorityElement != -1) {
+            System.out.println("Majority Element: " + majorityElement);
+        } else {
+            System.out.println("No Majority Element found");
+        }
+//
+
         //*************************
     }
+
+    public static void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+        reverse(nums, 0, n - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+    }
+
+    private static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static int findMajorityElement(int[] nums) {
+        int candidate = 0, count = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        count = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+
+        return count > nums.length / 2 ? candidate : -1;
+    }
+
+    public static int[] findUnion(int[] arr1, int[] arr2) {
+        Set<Integer> unionSet = new HashSet<>();
+
+        for (int num : arr1) {
+            unionSet.add(num);
+        }
+
+        for (int num : arr2) {
+            unionSet.add(num);
+        }
+
+//        int[] result = new int[unionSet.size()];
+//        int index = 0;
+//        for (int num : unionSet) {
+//            result[index++] = num;
+//        }
+
+        return unionSet.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+
+    public static void moveZeros(int[] arr) {
+        int index = 0;
+
+        for (int num : arr) {
+            if (num != 0) {
+                arr[index++] = num;
+            }
+        }
+        while (index < arr.length) {
+            arr[index++] = 0;
+        }
+    }
+
+
+    public static void rearrange(int[] arr) {
+        List<Integer> positives = new ArrayList<>();
+        List<Integer> negatives = new ArrayList<>();
+
+        for (int num : arr) {
+            if (num >= 0) {
+                positives.add(num);
+            } else {
+                negatives.add(num);
+            }
+        }
+
+        int i = 0, posIndex = 0, negIndex = 0;
+        while (posIndex < positives.size() && negIndex < negatives.size()) {
+            arr[i++] = positives.get(posIndex++);
+            arr[i++] = negatives.get(negIndex++);
+        }
+
+        while (posIndex < positives.size()) {
+            arr[i++] = positives.get(posIndex++);
+        }
+
+        while (negIndex < negatives.size()) {
+            arr[i++] = negatives.get(negIndex++);
+        }
+    }
+
+
+    public static boolean isPalindrome(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
     public static void printNextGreaterElement(int[] arr) {
         Stack<Integer> stack = new Stack<>();
         int[] result = new int[arr.length];
@@ -235,18 +389,19 @@ public class JavaLogics {
         }
         return count;
     }
+
     public static boolean isPalindrome(int num) {
         int originalNumber = num;
         int reversedNumber = 0;
         while (num != 0) {
-           // int digit = num % 10;
+            // int digit = num % 10;
             reversedNumber = (reversedNumber * 10) + num % 10;
-            num = num/10;
+            num = num / 10;
         }
         return originalNumber == reversedNumber;
     }
 
-    static void   SecondLargestAndSmallest(int arr[]) {
+    static void SecondLargestAndSmallest(int arr[]) {
         if (arr.length < 2) {
             System.out.println("Array should contain at least two elements");
             return;
@@ -257,7 +412,7 @@ public class JavaLogics {
         int largest = Integer.MIN_VALUE, secondLargest = Integer.MIN_VALUE;
 
         // Find the smallest and largest numbers
-        for (int a :arr) {
+        for (int a : arr) {
             if (a < smallest) {
                 secondSmallest = smallest;
                 smallest = a;
@@ -265,7 +420,7 @@ public class JavaLogics {
                 secondSmallest = a;
             }
 
-            if (a> largest) {
+            if (a > largest) {
                 secondLargest = largest;
                 largest = a;
             } else if (a > secondLargest && a != largest) {
@@ -365,7 +520,7 @@ public class JavaLogics {
         Map<Integer, Integer> countMap = new HashMap<>();
         for (int num : array) {
             countMap.put(num, countMap.getOrDefault(num, 0) + 1);
-           // countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+            // countMap.put(num, countMap.getOrDefault(num, 0) + 1);
         }
 
 // Step 2: Identify elements with count equal to 1 (non repeated)
@@ -399,7 +554,7 @@ public class JavaLogics {
 //                nonRepeatedElements.add(entry.getKey());
 //            }
 //        }
-        return countMap.entrySet().stream().filter(e->e.getValue()==1).map(e->e.getKey()).collect(Collectors.toList());
+        return countMap.entrySet().stream().filter(e -> e.getValue() == 1).map(e -> e.getKey()).collect(Collectors.toList());
     }
 
     public static Set<Integer> findCommonElements(int[] array1,
@@ -418,8 +573,9 @@ public class JavaLogics {
         }
         return commonSet;
     }
+
     public static Set<Integer> findCommonElements(int[] array1,
-                                                  int[] array2,int[] array3) {
+                                                  int[] array2, int[] array3) {
         Set<Integer> set1 = new HashSet<>();
         Set<Integer> set2 = new HashSet<>();
         Set<Integer> commonSet = new HashSet<>();
@@ -451,8 +607,8 @@ public class JavaLogics {
             }
         }
 // Concatenate non-digits followed by digits
-      //  return digits.toString() + nonDigits.toString();
-        return nonDigits.toString()+digits.toString() ;
+        //  return digits.toString() + nonDigits.toString();
+        return nonDigits.toString() + digits.toString();
     }
 
     public static void separateAlphaAndNumeric(String input) {
@@ -504,7 +660,7 @@ public class JavaLogics {
 
 
         StringBuilder doubled = new StringBuilder();
-        for (char c:str.toCharArray()) {
+        for (char c : str.toCharArray()) {
             //char ch = str.charAt(i);
             doubled.append(c).append(c); // Append each character twice
         }
