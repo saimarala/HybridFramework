@@ -14,6 +14,15 @@ public class JavaLogics {
 //        Java program – input array was
 //        given [ 1,1,2,2,3,4,5,5,6,6],
 //        Output – [3,4]
+
+
+        String input = "swiss";
+        char result = firstNonRepeatedChar(input);
+        if (result != '_') {
+            System.out.println("First non-repeated character: " + result);
+        } else {
+            System.out.println("No non-repeated character found");
+        }
         int[] array = {1, 1, 2, 2, 3, 4, 5, 5, 6, 6};
 ////        List<Integer> result = findNonRepeatedElements(array);
 ////        System.out.println("Non-repeated elements: " + result);
@@ -513,6 +522,22 @@ public class JavaLogics {
                 System.out.println(ch + " : " + charCountMap.get(ch));
             }
         }
+    }
+
+    public static char firstNonRepeatedChar(String str) {
+        Map<Character, Integer> charCount = new LinkedHashMap<>();
+
+        for (char c : str.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+
+        return '_'; // Return '_' if no non-repeated character is found
     }
 
     public static List<Integer> findNonRepeatedElements(int[] array) {
