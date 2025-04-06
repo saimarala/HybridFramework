@@ -29,7 +29,7 @@ public class BrokenLinks {
             HttpURLConnection conn=(HttpURLConnection)linkURL.openConnection();
             conn.connect();
             if(conn.getResponseCode()>=400){
-                System.out.println("broken links");
+                System.out.println("broken links "+href);
                 count++;
             }else{
                 System.out.println();
